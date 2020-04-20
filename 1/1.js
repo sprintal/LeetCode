@@ -3,15 +3,17 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
+    const map = new Map();
     for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                return [i, j];
-            }
+        if (map[target - nums[i]] >= 0) {
+            return [map[target - nums[i]], i];
+        }
+        else {
+            map[nums[i]] = i;
         }
     }
 };
 
-// Runtime: 104 ms, faster than 49.43% of JavaScript online submissions for Two Sum.
-// Memory Usage: 35 MB, less than 36.82% of JavaScript online submissions for Two Sum.
+// Runtime: 52 ms, faster than 92.37% of JavaScript online submissions for Two Sum.
+// Memory Usage: 34.4 MB, less than 89.67% of JavaScript online submissions for Two Sum.
